@@ -9,67 +9,67 @@ z2
 cModel Technology
 dE:/Modeltech_pe_edu_10.4a/examples
 vtrafficlightEW
-Z0 !s110 1453414291
+Z0 !s110 1454375677
 !i10b 1
-!s100 [FVf5nIN4ezO<n26a@ka91
-IJ0CD3dP_[DI4f:BX4G@b`3
+!s100 Rh_Boei7NVoH;W0ELHl[<2
+IdR1j9gFj:;1Hk>bB1`hm>1
 Z1 VDg1SIo80bB@j0V0VzS_@n1
-Z2 dC:/Users/Gus/Google Drive/school/2016/spring 2016/CSE 577/hw01
-w1453413450
-8trafficlightEW.v
-FtrafficlightEW.v
+Z2 dF:/Google Drive/school/2016/spring 2016/CSE 577/hw01
+w1454375652
+8F:/Google Drive/school/2016/spring 2016/CSE 577/hw01/trafficlightEW.v
+FF:/Google Drive/school/2016/spring 2016/CSE 577/hw01/trafficlightEW.v
 L0 8
 Z3 OP;L;10.4a;61
 r1
 !s85 0
 31
-Z4 !s108 1453414285.000000
-Z5 !s107 testbench.v|trafficlightNS.v|trafficlightEW.v|
-Z6 !s90 -lint|trafficlightEW.v|trafficlightNS.v|testbench.v|
+Z4 !s108 1454375677.000000
+!s107 F:/Google Drive/school/2016/spring 2016/CSE 577/hw01/trafficlightEW.v|
+!s90 -reportprogress|300|-lint|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|F:/Google Drive/school/2016/spring 2016/CSE 577/hw01/trafficlightEW.v|
 !s101 -O0
 !i113 1
-Z7 o-lint -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+Z5 o-lint -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
 ntrafficlight@e@w
 vtrafficlightNS
 R0
 !i10b 1
-!s100 :ER2dTZM0IC4j81Vffl=A2
-I<VVdH@Cn3b51]943U_WK[2
+!s100 1SE43PJ]?om5b]zNgN7[43
+IW8nc>^d4XMgmo8HLEKG?g0
 R1
 R2
-w1453414086
-8trafficlightNS.v
-FtrafficlightNS.v
+w1454375670
+8F:/Google Drive/school/2016/spring 2016/CSE 577/hw01/trafficlightNS.v
+FF:/Google Drive/school/2016/spring 2016/CSE 577/hw01/trafficlightNS.v
 L0 20
 R3
 r1
 !s85 0
 31
 R4
-R5
-R6
+!s107 F:/Google Drive/school/2016/spring 2016/CSE 577/hw01/trafficlightNS.v|
+!s90 -reportprogress|300|-lint|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|F:/Google Drive/school/2016/spring 2016/CSE 577/hw01/trafficlightNS.v|
 !s101 -O0
 !i113 1
-R7
+R5
 ntrafficlight@n@s
 vtrafficlights_tb
 R0
 !i10b 1
 !s100 I1CcTD@G@W>EXknNM?<^@1
-I?<nnbgJJmzM7^@3LQac<G3
+I4Y=m@2@Kjjm@Qk]zI];2k0
 R1
 R2
-w1453414275
-8testbench.v
-Ftestbench.v
+w1454375168
+8F:/Google Drive/school/2016/spring 2016/CSE 577/hw01/testbench.v
+FF:/Google Drive/school/2016/spring 2016/CSE 577/hw01/testbench.v
 L0 5
 R3
 r1
 !s85 0
 31
 R4
-R5
-R6
+!s107 F:/Google Drive/school/2016/spring 2016/CSE 577/hw01/testbench.v|
+!s90 -reportprogress|300|-lint|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|F:/Google Drive/school/2016/spring 2016/CSE 577/hw01/testbench.v|
 !s101 -O0
 !i113 1
-R7
+R5

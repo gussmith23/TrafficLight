@@ -52,13 +52,13 @@ always @ (posedge clock) begin
 	
 	// Else, simply update state.
 	else begin		
-		allstop <= 0;
 		counter <= next_counter;
 		state <= next_state;
 	end
 end
 
-always @ (counter or state or allstop) begin
+always @ (counter or state) begin
+allstop <= 0;
 case(state)
 // Left
 3'b000: begin
