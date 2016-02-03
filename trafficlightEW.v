@@ -15,7 +15,7 @@ reg[4:0] next_counter;
 reg[1:0] last_state;
 reg[2:0] state;
 reg[2:0] next_state;
-reg allstop;
+//reg allstop;
 reg[3:0] out_reg;
 
 assign out = out_reg;
@@ -25,12 +25,12 @@ initial begin
 	next_counter = 0;
 	state = 0;
 	next_state = 3'b011;		// EW starts red.
-	allstop = 0;
+	//allstop = 0;
 	out_reg = 4'b1001;
 end
 
 always @ (posedge clk) begin
-	if (emergency == 1 && allstop != 1) begin
+	if (emergency == 1 && state != 3'b100 /*allstop != 1*/) begin
 		last_state <=  state;
 		state <= 3'b100;
 		//counter <= counter; 	
@@ -42,7 +42,7 @@ always @ (posedge clk) begin
 end
 
 always @ (counter or state) begin
-allstop <= 0;
+//allstop <= 0;
 case(state)
 // Left
 3'b000: begin
@@ -94,7 +94,7 @@ case(state)
 	end
 // Allstop
 3'b100: begin
-		allstop <= 1;
+		//allstop <= 1;
 		out_reg <= 4'b0001;
 		next_state <= last_state;
 	end
