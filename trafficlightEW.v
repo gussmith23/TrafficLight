@@ -5,8 +5,8 @@
  * 	set through parameters - however, only just learned about parameters after I'd finished
  *	the assignment!
  */
-module trafficlightEW(emergency, clock, out);
-	input clock;
+module trafficlightEW(emergency, clk, out);
+	input clk;
 	input emergency;
 	output[3:0] out; 
 	
@@ -29,7 +29,7 @@ initial begin
 	out_reg = 4'b1001;
 end
 
-always @ (posedge clock) begin
+always @ (posedge clk) begin
 	if (emergency == 1 && allstop != 1) begin
 		last_state <=  state;
 		state <= 3'b100;

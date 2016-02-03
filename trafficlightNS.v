@@ -3,7 +3,7 @@
  * Author: Gus Smith <hfs5022@psu.edu>
  * Inputs:
  * 	emergency: 	indicates the presence of an emergency vehicle.
- *	clock: 			clock signal.
+ *	clk: 			clk signal.
  * Outputs:
  *	out:				a 4-wide wire vector with the following components:
  *		out[3]: 	left turn signal.
@@ -17,8 +17,8 @@
  *	to red for a single cycle and then returns to its previous state with
  *	the remaining cycles.
  */
-module trafficlightNS(emergency, clock, out);
-	input clock;
+module trafficlightNS(emergency, clk, out);
+	input clk;
 	input emergency;
 	output[3:0] out; 
 	
@@ -41,7 +41,7 @@ initial begin
 	out_reg = 4'b1001;
 end
 
-always @ (posedge clock) begin
+always @ (posedge clk) begin
 	
 	// If emergency vehicle present, save current state and go to allstop state.
 	if (emergency == 1 && allstop != 1) begin
