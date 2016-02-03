@@ -24,7 +24,7 @@ module trafficlightNS(emergency, clk, out);
 	
 reg[4:0] counter;
 reg[4:0] next_counter;
-reg[1:0] last_state;		// Note that last_state has only 4 possible values (all but allstop).
+reg[1:0] saved_state;		// Note that saved_state has only 4 possible values (all but allstop).
 reg[2:0] state;					
 reg[2:0] next_state;
 //reg allstop;
@@ -45,7 +45,7 @@ always @ (posedge clk) begin
 	
 	// If emergency vehicle present, save current state and go to allstop state.
 	if (emergency == 1 && state != 3'b100 /*&& allstop != 1*/) begin
-		last_state <=  state;
+		saved_state <=  state;
 		state <= 3'b100;
 		//counter <= counter; // No change
 	end
@@ -112,7 +112,7 @@ case(state)
 3'b100: begin
 		//allstop <= 1;
 		out_reg <= 4'b0001;
-		next_state <= last_state;
+		next_state <= saved_state;
 	end
 endcase
 end

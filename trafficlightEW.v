@@ -12,7 +12,7 @@ module trafficlightEW(emergency, clk, out);
 	
 reg[4:0] counter;
 reg[4:0] next_counter;
-reg[1:0] last_state;
+reg[1:0] saved_state;
 reg[2:0] state;
 reg[2:0] next_state;
 //reg allstop;
@@ -31,7 +31,7 @@ end
 
 always @ (posedge clk) begin
 	if (emergency == 1 && state != 3'b100 /*allstop != 1*/) begin
-		last_state <=  state;
+		saved_state <=  state;
 		state <= 3'b100;
 		//counter <= counter; 	
 	end
@@ -96,7 +96,7 @@ case(state)
 3'b100: begin
 		//allstop <= 1;
 		out_reg <= 4'b0001;
-		next_state <= last_state;
+		next_state <= saved_state;
 	end
 endcase
 end
