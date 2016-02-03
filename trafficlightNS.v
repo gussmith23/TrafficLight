@@ -47,7 +47,7 @@ always @ (posedge clk) begin
 	if (emergency == 1 && allstop != 1) begin
 		last_state <=  state;
 		state <= 3'b100;
-		counter <= counter; // No change
+		//counter <= counter; // No change
 	end
 	
 	// Else, simply update state.

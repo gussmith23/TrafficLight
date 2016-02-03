@@ -33,7 +33,7 @@ always @ (posedge clk) begin
 	if (emergency == 1 && allstop != 1) begin
 		last_state <=  state;
 		state <= 3'b100;
-		counter <= counter; 	
+		//counter <= counter; 	
 	end
 	else begin
 		counter <= next_counter;
