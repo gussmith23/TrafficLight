@@ -4,27 +4,27 @@
  */
 module trafficlights_tb;
 
-reg clock;
+reg clk;
 reg emergency;
 integer cycles;
 wire[3:0] EWout;
 wire[3:0] NSout;
 
 trafficlightNS ns(
-	.clock(clock),
+	.clk(clk),
 	.emergency(emergency),
 	.out(NSout)
 );
 
 trafficlightEW ew(
-	.clock(clock),
+	.clk(clk),
 	.emergency(emergency),
 	.out(EWout)
 );
 
 initial
 begin
-	clock = 1;
+	clk = 1;
 	emergency = 0;
 	cycles = 0;
 end
@@ -38,8 +38,8 @@ always #10 begin
 	cycles = cycles + 1;
 end
 
-// Generate clock and emergency signals.
-always 	#5 clock = !clock;
+// Generate clk and emergency signals.
+always 	#5 clk = !clk;
 always	#30 begin 
 	emergency = 1;
 	#15 emergency = 0;
