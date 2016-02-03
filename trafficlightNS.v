@@ -43,9 +43,10 @@ end
 
 always @ (posedge clk) begin
 	
-	// If emergency vehicle present, save current state and go to allstop state.
+	// If emergency vehicle present, save the next state we would have gone to
+	//		and instead go to allstop state.
 	if (emergency == 1 && state != 3'b100 /*&& allstop != 1*/) begin
-		saved_state <=  state;
+		saved_state <=  next_state;
 		state <= 3'b100;
 		//counter <= counter; // No change
 	end
