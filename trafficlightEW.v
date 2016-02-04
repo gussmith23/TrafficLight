@@ -54,7 +54,7 @@ case(state)
 // Green
 GREEN: begin
 	out_reg <= 4'b0100;
-	if (counter < 4) begin
+	if (counter < 5) begin
 		out_reg <= 4'b1001;
 		next_state <= GREEN;
 		next_counter <= counter + 1;
