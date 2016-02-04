@@ -6,8 +6,8 @@ module trafficlightEW(emergency, clk, out);
 reg[4:0] counter;
 reg[4:0] next_counter;
 reg[1:0] saved_state;		// Note that saved_state has only 4 possible values (all but allstop).
-reg[2:0] state;					
-reg[2:0] next_state;
+reg[1:0] state;					
+reg[1:0] next_state;
 //reg allstop;
 reg[3:0] out_reg;
 
