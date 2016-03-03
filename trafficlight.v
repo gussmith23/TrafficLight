@@ -50,6 +50,16 @@ parameter Yellow_EW_1 			= 7'd34;
 parameter Yellow_EW_2 			= 7'd35;
 
 
+reg LeftTurn_NS_reg ;
+reg Green_NS_reg    ;
+reg Yellow_NS_reg   ;
+reg Red_NS_reg      ;
+reg LeftTurn_EW_reg ;
+reg Green_EW_reg    ;
+reg Yellow_EW_reg   ;
+reg Red_EW_reg      ;
+
+
 assign LeftTurn_NS   =  LeftTurn_NS_reg ;
 assign Green_NS      =  Green_NS_reg    ;
 assign Yellow_NS     =  Yellow_NS_reg   ;
@@ -59,17 +69,23 @@ assign Green_EW      =  Green_EW_reg    ;
 assign Yellow_EW     =  Yellow_EW_reg   ;
 assign Red_EW	     =  Red_EW_reg      ;
 
+initial begin
+	state <= 7'b0;
+	next_state <= 7'b0;
+end
+
 
 
 always @ (posedge clk) begin
 	if (rst) state <= 7'b0;
-	if (emergency) state <= state + emergency_offset;
-	if (!rst && !emergency) state <= next_state;
+	// We only want to go into emergency state if we're not already in an emergency state.
+	if (emergency && state < emergency_offset) state <= next_state + emergency_offset;
+	if (!rst && (!emergency || state >= emergency_offset)) state <= next_state;
 end
 
 always @ (state) begin
 
-case(state):
+case(state)
 LeftTurn_NS_0:   begin
 	LeftTurn_NS_reg  <= 1;
 	Green_NS_reg     <= 0;
