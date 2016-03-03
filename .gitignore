@@ -3,3 +3,6 @@ transcript
 vsim.wlf
 work
 work.old
+testbench.v.bak trafficlight.v.bak trafficlightEW.v.bak trafficlightNS.v.bak
+*.bak
+old
