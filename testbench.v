@@ -59,10 +59,10 @@ end
 // Log info.
 initial begin
 	$display("\tcycles\temergency\t\tEWout\tNSout");
-	$monitor("%d %d %d %d %d %d %d %d %d\t\temer, rst: %d%d",cycles, LeftTurn_NS,Green_NS,Yellow_NS,Red_NS, LeftTurn_EW, Green_EW, Yellow_EW, Red_EW, emergency, rst);	
+
 end
-always #10 begin
-	//$display("%d\t\t\t%b\t%b\t%b", cycles,emergency,EWout,NSout); 
+always #10 begin	
+	$display("%d %d %d %d %d %d %d %d %d\t\temer, rst: %d%d",cycles, LeftTurn_NS,Green_NS,Yellow_NS,Red_NS, LeftTurn_EW, Green_EW, Yellow_EW, Red_EW, emergency, rst);	
 	cycles = cycles + 1;
 end
 

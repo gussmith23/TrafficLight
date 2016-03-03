@@ -79,8 +79,8 @@ end
 always @ (posedge clk) begin
 	if (rst) state <= 7'b0;
 	// We only want to go into emergency state if we're not already in an emergency state.
-	if (emergency && state < emergency_offset) state <= next_state + emergency_offset;
-	if (!rst && (!emergency || state >= emergency_offset)) state <= next_state;
+	//if (emergency && state < emergency_offset) state <= next_state + emergency_offset;
+	if (!rst) state <= next_state;
 end
 
 always @ (state) begin
@@ -95,7 +95,7 @@ LeftTurn_NS_0:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= LeftTurn_NS_1;
+	next_state <= (emergency) ? LeftTurn_NS_0 + emergency_offset : LeftTurn_NS_1;
 end
 LeftTurn_NS_1:   begin
 	LeftTurn_NS_reg  <= 1;
@@ -106,7 +106,7 @@ LeftTurn_NS_1:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= LeftTurn_NS_2;
+	next_state <= (emergency) ? LeftTurn_NS_1 + emergency_offset : LeftTurn_NS_2;
 end
 LeftTurn_NS_2:   begin
 	LeftTurn_NS_reg  <= 1;
@@ -117,7 +117,7 @@ LeftTurn_NS_2:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= LeftTurn_NS_3;
+	next_state <= (emergency) ? LeftTurn_NS_2 + emergency_offset : LeftTurn_NS_3;
 end
 LeftTurn_NS_3:   begin
 	LeftTurn_NS_reg  <= 1;
@@ -128,7 +128,7 @@ LeftTurn_NS_3:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= LeftTurn_NS_4;
+	next_state <= (emergency) ? LeftTurn_NS_3 + emergency_offset : LeftTurn_NS_4;
 end
 LeftTurn_NS_4:   begin
 	LeftTurn_NS_reg  <= 1;
@@ -139,7 +139,7 @@ LeftTurn_NS_4:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_0;
+	next_state <= (emergency) ? LeftTurn_NS_4 + emergency_offset : Green_NS_0;
 end
 Green_NS_0 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -150,7 +150,7 @@ Green_NS_0 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_1;
+	next_state <= (emergency) ? Green_NS_0 + emergency_offset : Green_NS_1;
 end
 Green_NS_1 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -161,7 +161,7 @@ Green_NS_1 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_2;
+	next_state <= (emergency) ? Green_NS_1 + emergency_offset : Green_NS_2;
 end
 Green_NS_2 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -172,7 +172,7 @@ Green_NS_2 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_3;
+	next_state <= (emergency) ? Green_NS_2 + emergency_offset : Green_NS_3;
 end
 Green_NS_3 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -183,7 +183,7 @@ Green_NS_3 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_4;
+	next_state <= (emergency) ? Green_NS_3 + emergency_offset : Green_NS_4;
 end
 Green_NS_4 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -194,7 +194,7 @@ Green_NS_4 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_5;
+	next_state <= (emergency) ? Green_NS_4 + emergency_offset : Green_NS_5;
 end
 Green_NS_5 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -205,7 +205,7 @@ Green_NS_5 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_6;
+	next_state <= (emergency) ? Green_NS_5 + emergency_offset : Green_NS_6;
 end
 Green_NS_6 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -216,7 +216,7 @@ Green_NS_6 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_7;
+	next_state <= (emergency) ? Green_NS_6 + emergency_offset : Green_NS_7;
 end
 Green_NS_7 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -227,7 +227,7 @@ Green_NS_7 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_8;
+	next_state <= (emergency) ? Green_NS_7 + emergency_offset : Green_NS_8;
 end
 Green_NS_8 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -238,7 +238,7 @@ Green_NS_8 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_NS_9;
+	next_state <= (emergency) ? Green_NS_8 + emergency_offset : Green_NS_9;
 end
 Green_NS_9 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -249,7 +249,7 @@ Green_NS_9 	:    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Yellow_NS_0;
+	next_state <= (emergency) ? Green_NS_9 + emergency_offset : Yellow_NS_0;
 end
 Yellow_NS_0 :	 begin
 	LeftTurn_NS_reg  <= 0;
@@ -260,7 +260,7 @@ Yellow_NS_0 :	 begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Yellow_NS_1;
+	next_state <= (emergency) ? Yellow_NS_0 + emergency_offset : Yellow_NS_1;
 end
 Yellow_NS_1 :	 begin
 	LeftTurn_NS_reg  <= 0;
@@ -271,7 +271,7 @@ Yellow_NS_1 :	 begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Yellow_NS_2;
+	next_state <= (emergency) ? Yellow_NS_1 + emergency_offset : Yellow_NS_2;
 end
 Yellow_NS_2 :	 begin
 	LeftTurn_NS_reg  <= 0;
@@ -282,7 +282,7 @@ Yellow_NS_2 :	 begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= LeftTurn_EW_0;
+	next_state <= (emergency) ? Yellow_NS_2 + emergency_offset : LeftTurn_EW_0;
 end
 LeftTurn_EW_0:   begin
 	LeftTurn_NS_reg  <= 0;
@@ -293,7 +293,7 @@ LeftTurn_EW_0:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= LeftTurn_EW_1;
+	next_state <= (emergency) ? LeftTurn_EW_0 + emergency_offset : LeftTurn_EW_1;
 end
 LeftTurn_EW_1:   begin
 	LeftTurn_NS_reg  <= 0;
@@ -304,7 +304,7 @@ LeftTurn_EW_1:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= LeftTurn_EW_2;
+	next_state <= (emergency) ? LeftTurn_EW_1 + emergency_offset : LeftTurn_EW_2;
 end
 LeftTurn_EW_2:   begin
 	LeftTurn_NS_reg  <= 0;
@@ -315,7 +315,7 @@ LeftTurn_EW_2:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= LeftTurn_EW_3;
+	next_state <= (emergency) ? LeftTurn_EW_2 + emergency_offset : LeftTurn_EW_3;
 end
 LeftTurn_EW_3:   begin
 	LeftTurn_NS_reg  <= 0;
@@ -326,7 +326,7 @@ LeftTurn_EW_3:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= LeftTurn_EW_4;
+	next_state <= (emergency) ? LeftTurn_EW_3 + emergency_offset : LeftTurn_EW_4;
 end
 LeftTurn_EW_4:   begin
 	LeftTurn_NS_reg  <= 0;
@@ -337,7 +337,7 @@ LeftTurn_EW_4:   begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 1;
-	next_state <= Green_EW_0;
+	next_state <= (emergency) ? LeftTurn_EW_4 + emergency_offset : Green_EW_0;
 end
 Green_EW_0 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -348,7 +348,7 @@ Green_EW_0 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Green_EW_1;
+	next_state <= (emergency) ? Green_EW_0 + emergency_offset : Green_EW_1;
 end
 Green_EW_1 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -359,7 +359,7 @@ Green_EW_1 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Green_EW_2;
+	next_state <= (emergency) ? Green_EW_1 + emergency_offset : Green_EW_2;
 end
 Green_EW_2 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -370,7 +370,7 @@ Green_EW_2 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Green_EW_3;
+	next_state <= (emergency) ? Green_EW_2 + emergency_offset : Green_EW_3;
 end
 Green_EW_3 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -381,7 +381,7 @@ Green_EW_3 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Green_EW_4;
+	next_state <= (emergency) ? Green_EW_3 + emergency_offset : Green_EW_4;
 end
 Green_EW_4 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -392,7 +392,7 @@ Green_EW_4 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Green_EW_5;
+	next_state <= (emergency) ? Green_EW_4 + emergency_offset : Green_EW_5;
 end
 Green_EW_5 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -403,7 +403,7 @@ Green_EW_5 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Green_EW_6;
+	next_state <= (emergency) ? Green_EW_5 + emergency_offset : Green_EW_6;
 end
 Green_EW_6 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -414,7 +414,7 @@ Green_EW_6 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Green_EW_7;
+	next_state <= (emergency) ? Green_EW_6 + emergency_offset : Green_EW_7;
 end
 Green_EW_7 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -425,7 +425,7 @@ Green_EW_7 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Green_EW_8;
+	next_state <= (emergency) ? Green_EW_7 + emergency_offset : Green_EW_8;
 end
 Green_EW_8 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -436,7 +436,7 @@ Green_EW_8 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Green_EW_9;
+	next_state <= (emergency) ? Green_EW_8 + emergency_offset : Green_EW_9;
 end
 Green_EW_9 	:    begin
 	LeftTurn_NS_reg  <= 0;
@@ -447,7 +447,7 @@ Green_EW_9 	:    begin
 	Green_EW_reg     <= 1;
 	Yellow_EW_reg    <= 0;
 	Red_EW_reg       <= 0;
-	next_state <= Yellow_EW_0;
+	next_state <= (emergency) ? Green_EW_9 + emergency_offset : Yellow_EW_0;
 end
 Yellow_EW_0 :	 begin
 	LeftTurn_NS_reg  <= 0;
@@ -458,7 +458,7 @@ Yellow_EW_0 :	 begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 1;
 	Red_EW_reg       <= 0;
-	next_state <= Yellow_EW_1;
+	next_state <= (emergency) ? Yellow_EW_0 + emergency_offset : Yellow_EW_1;
 end
 Yellow_EW_1 :	 begin
 	LeftTurn_NS_reg  <= 0;
@@ -469,7 +469,7 @@ Yellow_EW_1 :	 begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 1;
 	Red_EW_reg       <= 0;
-	next_state <= Yellow_EW_2;
+	next_state <= (emergency) ? Yellow_EW_1 + emergency_offset : Yellow_EW_2;
 end
 Yellow_EW_2 :    begin
 
@@ -481,7 +481,7 @@ Yellow_EW_2 :    begin
 	Green_EW_reg     <= 0;
 	Yellow_EW_reg    <= 1;
 	Red_EW_reg       <= 0;
-	next_state <= LeftTurn_NS_0;
+	next_state <= (emergency) ? Yellow_EW_2 + emergency_offset : LeftTurn_NS_0;
 end
 
 LeftTurn_NS_0 + emergency_offset: 	begin
