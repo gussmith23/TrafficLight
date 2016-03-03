@@ -1,3 +1,22 @@
+/**
+ * Traffic Light Controller
+ * Author: Gus Smith <hfs5022@psu.edu>
+ * Inputs:
+ * 	emergency: 	indicates the presence of an emergency vehicle.
+ *	clk: 			clk signal.
+ * Outputs:
+ *	out:				a 4-wide wire vector with the following components:
+ *		out[3]: 	left turn signal.
+ *		out[2]:		green signal.
+ *		out[1]:		yellow signal.
+ *		out[0]:		red signal.
+ * Description:
+ *	This traffic light cycles through its four states as follows: 5 cycles
+ *	of left turn + red, 10 cycles of green, 3 cycles of yellow, and 18
+ *	cycles of red. When the emergency signal is raised, the light goes
+ *	to red for a single cycle and then returns to its previous state with
+ *	the remaining cycles.
+ */
 module trafficlight(emergency, clk, rst, LeftTurn_NS, Green_NS, Yellow_NS, Red_NS, LeftTurn_EW, Green_EW, Yellow_EW, Red_EW);
 	input emergency, clk, rst;
 	output LeftTurn_NS, Green_NS, Yellow_NS, Red_NS, LeftTurn_EW, Green_EW, Yellow_EW, Red_EW;
