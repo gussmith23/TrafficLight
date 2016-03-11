@@ -103,7 +103,15 @@ always @ (posedge clk) begin
 end
 
 always @ (state) begin
-
+LeftTurn_NS_reg  <= 0;
+Green_NS_reg     <= 0;
+Yellow_NS_reg    <= 0;
+Red_NS_reg       <= 0;
+LeftTurn_EW_reg  <= 0;
+Green_EW_reg     <= 0;
+Yellow_EW_reg    <= 0;
+Red_EW_reg       <= 0;
+next_state <= LeftTurn_NS_0;
 case(state)
 LeftTurn_NS_0:   begin
 	LeftTurn_NS_reg  <= 1;
@@ -899,7 +907,17 @@ Yellow_EW_2 + emergency_offset:  	begin
 	Red_EW_reg       <= 1;
 	next_state <= LeftTurn_NS_0;
 end
-
+default: begin
+	LeftTurn_NS_reg  <= 0;
+	Green_NS_reg     <= 0;
+	Yellow_NS_reg    <= 0;
+	Red_NS_reg       <= 0;
+	LeftTurn_EW_reg  <= 0;
+	Green_EW_reg     <= 0;
+	Yellow_EW_reg    <= 0;
+	Red_EW_reg       <= 0;
+	next_state <= LeftTurn_NS_0;
+end
 endcase
 end
 
